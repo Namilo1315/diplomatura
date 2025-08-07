@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trabajo Final - Silvia Molina</title>
+
+  <!-- ✅ Agregamos jsPDF desde CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef7f6;
+      color: #2e3c40;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: linear-gradient(135deg, #b2dfdb, #c8e6c9);
+      color: #103c3e;
+      animation: fadeInHeader 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 0;
+      font-weight: normal;
+    }
+
+    .poema-section {
+      margin: 30px auto;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .titulo-y-botones, .reflexion-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .titulo-poema, .reflexion-titulo {
+      font-size: 23px;
+      font-weight: bold;
+      color: #456268;
+    }
+    .titulo-poema1 {
+      margin-top: -35px;
+      font-size: 22px;
+      font-weight: 500PZ;
+      color: #69939b;
+      margin-bottom: -10px;
+    }
+    .botones {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .botones button {
+      background-color: #5aa897;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .botones button:hover {
+      background-color: #3c7d72;
+    }
+
+    .poema {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.6;
+      animation: fadeIn 2.5s ease-in;
+      white-space: pre-line;
+    }
+
+    .reflexion-texto {
+      margin-top: -10px;
+      font-size: 15px;
+      color: #000000;
+      white-space: pre-line;
+    }
+
+    strong.trastorno {
+      color: #d32f2f;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    video {
+      margin: 20px auto;
+      display: block;
+      width: 90%;
+      max-width: 480px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .descargar {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .descargar a {
+      display: inline-block;
+      background-color: #5aa897;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .descargar a:hover {
+      background-color: #574fd6;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 20px 10px;
+      background-color: #dfeff0;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeInHeader {
+      0% {opacity: 0; transform: translateY(-20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    @media (max-width: 600px) {
+      h1, h2 {
+        text-align: center;
+      }
+
+      .titulo-y-botones,
+      .reflexion-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .botones {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .botones button {
+        width: 100%;
+      }
+
+      .poema {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Diplomatura Académica en Salud Mental de Neurociencia</h1>
+    <h2>Alumna: Silvia Molina</h2>
+  </header>
+
+  <section class="poema-section">
+
+    <div class="titulo-y-botones">
+      <div class="titulo-poema">Poema Escogido:</div>
+      <div class="botones">
+        <button onclick="document.getElementById('videoPoema').scrollIntoView({ behavior: 'smooth' }); document.getElementById('videoPoema').play()">🎥 Ver Video</button>
+      </div>
+    </div>
+
+    <div class="poema" id="contenido-poema">
+      <div class="titulo-poema1">Jardín en Bucle</div>
+Llueve dentro.  
+No agua,  
+sino pensamientos rotos,  
+bordeados de espinas invisibles.  
+El día comienza  
+con relojes que gritan  
+que algo falta,  
+que algo sobra,  
+que algo no se hizo aún tres veces seguidas.  
+La mente no camina:  
+corre en círculos,  
+salta precipicios de papel  
+y dibuja mapas que cambian  
+antes de ser comprendidos.  
+Las palabras pesan  
+como los colores cuando duelen.  
+El sol existe,  
+pero no entra.  
+Está detrás de una cortina  
+que nadie recuerda haber colgado.  
+Los gestos se repiten,  
+como si el alma  
+esperara encontrar sentido  
+en lo exacto,  
+en lo igual,  
+en lo que se revisa  
+hasta que deja de significar.  
+Y aun así,  
+en el centro del jardín  
+una flor insiste.  
+No es simétrica,  
+ni alegre,  
+ni fácil.  
+Pero se abre.  
+Y al abrirse,  
+susurra:
+
+“No soy mi ruido interno.  
+No soy mi sombra lenta.  
+No soy mis rituales ocultos.  
+Soy quien sobrevive a ellos  
+y les da nombre.”
+    </div>
+
+    <video id="videoPoema" controls>
+      <source src="poema.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+
+    <div class="reflexion-top" style="margin-top: 40px;">
+      <div class="reflexion-titulo">Reflexión</div>
+      <div class="botones">
+        <button onclick="document.getElementById('videoReflexion').scrollIntoView({ behavior: 'smooth' }); document.getElementById('videoReflexion').play()">🎥 Ver Reflexión</button>
+      </div>
+    </div>
+
+    <div class="reflexion-texto">
+Este poema no habla de una sola voz, sino de muchas que conviven en el jardín interior de quienes  
+enfrentan bucles invisibles.  
+Las imágenes, los gestos repetidos, el sol que no entra, la flor que insiste...  
+representan tres estados del alma que se entrelazan:
+
+• <strong class="trastorno">Ansiedad</strong> — la urgencia interna, el pensamiento anticipado.  
+• <strong class="trastorno">Depresión</strong> — el peso que borra color y deseo.  
+• <strong class="trastorno">TOC</strong> — los rituales invisibles que buscan calmar un mundo que tiembla.  
+
+No se nombran directo, porque el alma no suele hablar con diagnósticos sino con símbolos.  
+Este jardín es una invitación a sentir sin explicación, a cruzar puentes hacia lo que muchas veces se  
+esconde y descubrir que florecer no es curar, sino existir con raíces torcidas y pétalos que tiemblan...  
+pero que insisten en abrirse cada día.
+    </div>
+
+    <video id="videoReflexion" controls>
+      <source src="refleccion.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+
+    <div class="descargar">
+      <a id="descargarPDF" href="#">📄 Descargar Poema (PDF)</a>
+    </div>
+
+  </section>
+
+  <footer>
+    Derechos reservados © Silvia Molina – 2025
+  </footer>
+
+  <!-- ✅ Script para generar y descargar el PDF con jsPDF -->
+  <script>
+    document.getElementById("descargarPDF").addEventListener("click", function (e) {
+      e.preventDefault();
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const texto = document.getElementById("contenido-poema").innerText;
+      const lineas = doc.splitTextToSize(texto, 180); // para márgenes
+
+      doc.setFont("Helvetica", "normal");
+      doc.setFontSize(12);
+      doc.text("Jardín en Bucle – Silvia Molina", 20, 20);
+      doc.text(lineas, 20, 30);
+
+      doc.save("Jardin_en_Bucle.pdf");
+    });
+  </script>
+
+</body>
+</html>
