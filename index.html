@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trabajo Final - Silvia Molina</title>
-
-  <!-- ✅ Agregamos jsPDF desde CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
@@ -57,13 +55,15 @@
       font-weight: bold;
       color: #456268;
     }
+
     .titulo-poema1 {
       margin-top: -35px;
       font-size: 22px;
-      font-weight: 500PZ;
+      font-weight: 500;
       color: #69939b;
       margin-bottom: -10px;
     }
+
     .botones {
       display: flex;
       gap: 10px;
@@ -94,11 +94,29 @@
       white-space: pre-line;
     }
 
-    .reflexion-texto {
+    .reflexion-texto, .introduccion-texto {
       margin-top: -10px;
       font-size: 15px;
       color: #000000;
       white-space: pre-line;
+    } 
+
+   .introduccion-texto {
+      margin-top: -10px;
+      font-size: 16px;
+      color: #000000;
+      
+      text-align: center;
+    }
+
+    .introduccion {
+      margin:  auto;
+      max-width: 800px;
+      padding: 0px;
+      
+      
+      border-radius: 10px;
+      
     }
 
     strong.trastorno {
@@ -189,11 +207,26 @@
     <h1>Diplomatura Académica en Salud Mental de Neurociencia</h1>
     <h2>Alumna: Silvia Molina</h2>
   </header>
-
+ 
   <section class="poema-section">
 
+    <div class="introduccion">
+      <div class="reflexion-titulo" >Trabajo Final:</div>
+      <div class="introduccion-texto">
+        El poema <strong>Jardín en Bucle</strong> es un espacio donde la mente se vuelve paisaje.  
+        A veces pensamos en círculos, nos perdemos en ideas que no se detienen, o sentimos que algo se repite sin que sepamos por qué.  
+        Este proyecto transforma esos procesos mentales en símbolos, caminos y decisiones que podés recorrer.  
+        No necesitás saber de neurociencia para entrar.  
+        Solo estar dispuesto a mirar lo que a veces queda en sombra.  
+        Este jardín está hecho para que lo sientas, lo explores, y quizás, te reconozcas en él.
+      </div>
+    </div>   
+   
+   
+
+<hr style="border: none; height: 2px; background-color: #5aa897; margin: 20px 0;">
     <div class="titulo-y-botones">
-      <div class="titulo-poema">Trabajo Final: Poema</div>
+      <div class="titulo-poema">Poema:</div>
       <div class="botones">
         <button onclick="document.getElementById('videoPoema').scrollIntoView({ behavior: 'smooth' }); document.getElementById('videoPoema').play()">🎥 Ver Video</button>
       </div>
@@ -250,8 +283,9 @@ y les da nombre.”
       Tu navegador no soporta el video.
     </video>
 
+    <hr style="border: none; height: 2px; background-color: #5aa897; margin-top: 50px;">
     <div class="reflexion-top" style="margin-top: 40px;">
-      <div class="reflexion-titulo">Reflexión</div>
+      <div class="reflexion-titulo" >Reflexión:</div>
       <div class="botones">
         <button onclick="document.getElementById('videoReflexion').scrollIntoView({ behavior: 'smooth' }); document.getElementById('videoReflexion').play()">🎥 Ver Reflexión</button>
       </div>
@@ -288,7 +322,6 @@ pero que insisten en abrirse cada día.
     Derechos reservados © Silvia Molina – 2025
   </footer>
 
-  <!-- ✅ Script para generar y descargar el PDF con jsPDF -->
   <script>
     document.getElementById("descargarPDF").addEventListener("click", function (e) {
       e.preventDefault();
@@ -296,7 +329,7 @@ pero que insisten en abrirse cada día.
       const doc = new jsPDF();
 
       const texto = document.getElementById("contenido-poema").innerText;
-      const lineas = doc.splitTextToSize(texto, 180); // para márgenes
+      const lineas = doc.splitTextToSize(texto, 180);
 
       doc.setFont("Helvetica", "normal");
       doc.setFontSize(12);
